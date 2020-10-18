@@ -1,24 +1,65 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+| name     | string | null: false |
+| namekana | string | null: false |
+| birthday | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchase
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column          | Type   | Options     |
+| ------          | ------ | ----------- |
+| image           |        |             |
+| itemname        | string | null: false |
+| itemdescription | text   | null: false |
+| itemdetails     | string | null: false |
+| delivery        | string | null: false |
+| itemvalue       | string | null: false |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :comments
 
-* Deployment instructions
+## purchase テーブル
 
-* ...
+| Column             | Type   | Options     |
+| ------             | ------ | -------     | 
+| cardinformation    | string | null: false |
+| expiration date    | string | null: false |
+| security code      | string | null: false |
+| postal code        | string | null: false |
+| prefectures        | string | null: false |
+| municipal District | string | null: false |
+| address            | string | null: false | 
+| building name      | string | null: false |
+| phone number       | string | null: false |
+
+### Association
+
+- has_many :comments
+- belongs_to :user
+
+## comments テーブル
+
+| Column  | Type       | Options |
+| ------- | ---------- | ------- |
+| text    | text       | null: false |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- belongs_to :purchase
