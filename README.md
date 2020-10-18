@@ -2,34 +2,31 @@
 
 ## users テーブル
 
-| Column        | Type   | Options     |
-| --------      | ------ | ----------- |
-| nickname      | string | null: false |
-| email         | string | null: false |
-| password      | string | null: false |
-| last name     | string | null: false |
-| name          | string | null: false |
-| last namekana | string | null: false |
-| namekana      | string | null: false |
-| birthday      | date   | null: false |
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
+| name     | string | null: false |
+| namekana | string | null: false |
+| birthday | date   | null: false |
 
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :purchase
 
 
 ## items テーブル
 
-| Column          | Type       | Options     |
-| ------          | ------     | ----------- |
-| itemname        | string     | null: false |
-| itemdescription | text       | null: false |
-| itemdetails     | integer    | null: false |
-| delivery        | integer    | null: false |
-| itemvalue       | integer    | null: false |
-| user            | references | null: false foreign_key: true |
-|
+| Column          | Type   | Options     |
+| ------          | ------ | ----------- |
+| image           |        |             |
+| itemname        | string | null: false |
+| itemdescription | text   | null: false |
+| itemdetails     | string | null: false |
+| delivery        | string | null: false |
+| itemvalue       | string | null: false |
 
 ### Association
 
@@ -38,14 +35,17 @@
 
 ## purchase テーブル
 
-| Column             | Type    | Options     |
-| ------             | ------  | -------     | 
-| postal code        | string  | null: false |
-| prefectures        | integer | null: false |
-| municipal District | string  | null: false |
-| address            | string  | null: false | 
-| building name      | string  |             |
-| phone number       | string  | null: false |
+| Column             | Type   | Options     |
+| ------             | ------ | -------     | 
+| cardinformation    | string | null: false |
+| expiration date    | string | null: false |
+| security code      | string | null: false |
+| postal code        | string | null: false |
+| prefectures        | string | null: false |
+| municipal District | string | null: false |
+| address            | string | null: false | 
+| building name      | string | null: false |
+| phone number       | string | null: false |
 
 ### Association
 
@@ -57,19 +57,6 @@
 | Column  | Type       | Options |
 | ------- | ---------- | ------- |
 | text    | text       | null: false |
-
-### Association
-
-- belongs_to :item
-- belongs_to :user
-- belongs_to :purchase
-
-## purchase after テーブル
-
-| Column  | Type       | Options                     |
-| ------- | ---------- | --------------------------- |
-| user    | references | null: false foreign_key: true |
-| item    | references | null: false foreign_key: true |
 
 ### Association
 
