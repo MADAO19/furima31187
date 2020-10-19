@@ -6,7 +6,7 @@
 | --------      | ------ | ----------- |
 | nickname      | string | null: false |
 | email         | string | null: false |
-| password      | string | null: false |
+| encrypted_password | string | null: false |
 | last_name     | string | null: false |
 | name          | string | null: false |
 | last_name_kana | string | null: false |
@@ -23,14 +23,14 @@
 
 | Column            | Type       | Options     |
 | ------            | ------     | ----------- |
-| itemname          | string     | null: false |
-| itemdescription   | text       | null: false |
-| itemcategory_id   | integer    | null: false |
-| itemstatus_id     | integer    | null: false |
+| name              | string     | null: false |
+| description       | text       | null: false |
+| category_id       | integer    | null: false |
+| status_id         | integer    | null: false |
 | deliverycharge_id | integer    | null: false |
 | prefectures_id    | integer    | null: false |
 | daystoship_id     | integer    | null: false |
-| itemvalue_id      | string     | null: false |
+| price_id          | integer    | null: false |
 | user              | references | null: false foreign_key: true |
 |
 
@@ -49,13 +49,12 @@
 | address            | string  | null: false | 
 | building_name      | string  |             |
 | phone_number       | string  | null: false |
-| user               | references | null: false foreign_key: true 
+| purchase_after     | references | null: false foreign_key: true |
 
 ### Association
 
 - has_many :comments
-- belongs_to :user
-- belongs_to :purchase after
+- belongs_to :purchase_after
 
 ## comments テーブル
 
@@ -69,7 +68,7 @@
 - belongs_to :user
 - belongs_to :purchase
 
-## purchase after テーブル
+## purchase_after テーブル
 
 | Column  | Type       | Options                     |
 | ------- | ---------- | --------------------------- |
