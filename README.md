@@ -27,9 +27,9 @@
 | description       | text       | null: false |
 | category_id       | integer    | null: false |
 | status_id         | integer    | null: false |
-| deliverycharge    | integer    | null: false |
-| prefectures       | integer    | null: false |
-| daystoship        | integer    | null: false |
+| deliverycharge_id    | integer    | null: false |
+| prefectures_id       | integer    | null: false |
+| daystoship_id        | integer    | null: false |
 | price             | integer    | null: false |
 | user              | references | null: false foreign_key: true |
 |
