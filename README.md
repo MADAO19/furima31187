@@ -67,7 +67,7 @@
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :purchase
+
 
 ## purchase_after テーブル
 
