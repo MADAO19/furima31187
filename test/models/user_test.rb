@@ -16,6 +16,18 @@ describe User do
     expect(user.errors[:email]).to include("can't be blank")
   end
 
+  it "メールアドレスが一意性であること" do
+    user = build(:user, email: )
+    user.valid?
+    expect(user.errors).to be_added(:email, :taken)
+    end
+
+    it "メールアドレスは、@を含む必要があること" do
+      user = build(:user, email: )
+      user.valid?
+      expect(user.errors).to include(:email, "@")
+      end
+
   it "passwordがない場合は登録できないこと" do
     user = build(:user, password: "")
     user.valid?
