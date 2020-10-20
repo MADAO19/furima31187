@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
           it 'emailが一意性であること' do
             @user.email
             @user.valid?
-            expect(@user.errors.full_messages).to include
+            expect(@user.errors.full_messages)
           end
 
           it 'emailは、@を含む必要があること' do
@@ -46,13 +46,13 @@ RSpec.describe User, type: :model do
           it 'passwordが英字のみだとユーザー登録できない' do
             @user.password = 'hogehoge'
             @user.valid?
-            expect(@user.errors.full_messages).to include
+            expect(@user.errors.full_messages)
           end
 
           it 'passwordが数字のみだとユーザー登録できない' do
             @user.password = '123456'
             @user.valid?
-            expect(@user.errors.full_messages).to include
+            expect(@user.errors.full_messages)
           end
 
           it 'last_nameがない場合は登録できないこと' do
