@@ -28,10 +28,10 @@
 | category_id       | integer    | null: false |
 | status_id         | integer    | null: false |
 | deliverycharge_id    | integer    | null: false |
-| prefectures_id       | integer    | null: false |
+| prefecture_id       | integer    | null: false |
 | daystoship_id        | integer    | null: false |
 | price             | integer    | null: false |
-| user              | references | null: false foreign_key: true |
+| user              | references | foreign_key: true |
 |
 
 ### Association
@@ -45,7 +45,7 @@
 | Column             | Type    | Options     |
 | ------             | ------  | -------     | 
 | postal_code        | string  | null: false |
-| prefectures_id     | integer | null: false |
+| prefecture_id     | integer | null: false |
 | municipal_district | string  | null: false |
 | address            | string  | null: false | 
 | building_name      | string  |             |
