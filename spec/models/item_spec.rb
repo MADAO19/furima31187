@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
           end
 
           it 'category_idの１を選択している場合は出品できないこと' do
-            @item.category_id = '1'
+            @item.category_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include('Category must be other than 1')
           end
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
           end
 
           it 'status_idの１を選択している場合は出品できないこと' do
-            @item.status_id = '1'
+            @item.status_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include('Status must be other than 1')
           end
@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
           end
 
           it 'deliverycharge_idの１を選択している場合は出品できないこと' do
-            @item.deliverycharge_id = '1'
+            @item.deliverycharge_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include('Deliverycharge must be other than 1')
           end
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
           end
 
           it 'prefecture_idの１を選択している場合は出品できないこと' do
-            @item.prefecture_id = '1'
+            @item.prefecture_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
           end
@@ -86,7 +86,7 @@ RSpec.describe Item, type: :model do
           end
 
           it 'daystoship_idの１を選択している場合は出品できないこと' do
-            @item.daystoship_id = '1'
+            @item.daystoship_id = 1
             @item.valid?
             expect(@item.errors.full_messages).to include('Daystoship must be other than 1')
           end
@@ -104,13 +104,13 @@ RSpec.describe Item, type: :model do
           end
 
           it 'priceが300円以下の場合は出品できないこと' do
-            @item.price = '299'
+            @item.price = 299
             @item.valid?
             expect(@item.errors.full_messages).to include('Price is not included in the list')
           end
 
           it 'priceが9999999円以上の場合は出品できないこと' do
-            @item.price = '10000000'
+            @item.price = 10000000
             @item.valid?
             expect(@item.errors.full_messages).to include('Price is not included in the list')
           end
