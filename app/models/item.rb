@@ -8,19 +8,23 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :category, presence: true
-  validates :daystoship, presence: true
-  validates :deliverycharge, presence: true
-  validates :prefecture, presence: true
-  validates :status, presence: true
-  validates :price, presence: true, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
-  validates :image, presence: true
+  with_options presence: true do
+    validates :name
+    validates :description
+    validates :category
+    validates :daystoship
+    validates :deliverycharge
+    validates :prefecture
+    validates :status
+    validates :price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
+    validates :image
+  end
 
-  validates :category_id, numericality: { other_than: 1 }
-  validates :daystoship_id, numericality: { other_than: 1 }
-  validates :deliverycharge_id, numericality: { other_than: 1 }
-  validates :prefecture_id, numericality: { other_than: 1 }
-  validates :status_id, numericality: { other_than: 1 }
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :daystoship_id
+    validates :deliverycharge_id
+    validates :prefecture_id
+    validates :status_id
+  end
 end
