@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.new
+    @items = Item.all
   end
 
   private
