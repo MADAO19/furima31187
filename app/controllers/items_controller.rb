@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
 
     else
-      render 'edit'
+      render :new
 
     end
   end
@@ -25,6 +25,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if user_signed_in?
+      redirect_to 'edit'
+      else
+       render root_path
   end
 
   def update
@@ -33,7 +37,7 @@ class ItemsController < ApplicationController
       redirect_to item_path
 
     else
-      render item_path
+      render 'edit'
 
     end
   end
