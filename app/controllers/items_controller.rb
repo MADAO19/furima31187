@@ -40,9 +40,9 @@ class ItemsController < ApplicationController
       render 'edit'
 
     end
-    end
+  end
 
-   def destroy
+  def destroy
     if user_signed_in? && current_user.id == @item.user_id
       @item.destroy
       redirect_to root_path
@@ -59,5 +59,3 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 end
-
-
