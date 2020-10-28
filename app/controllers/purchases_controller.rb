@@ -1,11 +1,13 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-  before_action :set_user, only: [:index, :create]
+  
 
   def index
     @connect = Connect.new
-    
+    if user_signed_in? && current_user.id == @item.user_id || @item.purchase_after != nil
+      redirect_to root_path
+    end
   end
   
 
@@ -41,9 +43,4 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def set_user
-    if user_signed_in? && current_user.id == @item.user_id || purchase_after != nil
-      redirect_to root_path
-      end
-end
 end
