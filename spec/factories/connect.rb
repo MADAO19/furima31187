@@ -5,6 +5,6 @@ FactoryBot.define do
     municipal_district { '東京都渋谷区' }
     address { '渋谷１−１−１' }
     building_name { '渋谷ハイツ' }
-    phone_number { '000-0000-0000' }
+    phone_number { '00000000000' }
   end
 end

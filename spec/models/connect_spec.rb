@@ -36,7 +36,7 @@ RSpec.describe Connect, type: :model do
           end
 
           it 'prefecture_idが1を選択している場合は登録できない' do
-            @connect.prefecture_id = ''
+            @connect.prefecture_id = 1
             @connect.valid?
             expect(@connect.errors.full_messages).to include('Prefecture must be other than 1')
           end
@@ -53,7 +53,11 @@ RSpec.describe Connect, type: :model do
             expect(@connect.errors.full_messages).to include("Address can't be blank")
           end
 
-          
+          it 'phone_numberが11桁よりも大きい場合登録できない' do
+            @connect.phone_number = 111111111111
+            @connect.valid?
+            expect(@connect.errors.full_messages).to include("Phone number is invalid")
+            end
 
           it 'phone_numberがない場合は登録できない' do
             @connect.phone_number = ''
