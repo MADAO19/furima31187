@@ -3,14 +3,14 @@ class PurchasesController < ApplicationController
 
   def index
     @connect = Connect.new
-    if user_signed_in? && current_user.id == @item.user_id
+    if user_signed_in? && current_user.id == @item.user_id && purchase_after != nil
       redirect_to root_path
   end
   end
 
   def create
     @connect = Connect.new(purchase_params)
-    if user_signed_in? && current_user.id == @item.user_id
+    if user_signed_in? && current_user.id == @item.user_id && purchase_after != nil
       redirect_to root_path
     if @connect.valid?
       pay_item
