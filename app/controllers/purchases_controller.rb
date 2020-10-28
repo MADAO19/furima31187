@@ -1,17 +1,16 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
+  before_action :set_ user, only: [:index, :create]
 
   def index
     @connect = Connect.new
-    if user_signed_in? && current_user.id == @item.user_id && purchase_after != nil
-      redirect_to root_path
+    
   end
-  end
+  
 
   def create
     @connect = Connect.new(purchase_params)
-    if user_signed_in? && current_user.id == @item.user_id && purchase_after != nil
-      redirect_to root_path
     if @connect.valid?
       pay_item
       @connect.save
@@ -20,7 +19,7 @@ class PurchasesController < ApplicationController
       render 'index'
     end
   end
-  end
+  
   
 
   private
@@ -41,4 +40,9 @@ class PurchasesController < ApplicationController
   def set_item
     @item = Item.find(params[:item_id])
   end
+
+  def set_user
+    if user_signed_in? && current_user.id == @item.user_id || purchase_after != nil
+      redirect_to root_path
+      end
 end
