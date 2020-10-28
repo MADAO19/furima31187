@@ -63,6 +63,13 @@ RSpec.describe Connect, type: :model do
             @connect.phone_number = ''
             @connect.valid?
             expect(@connect.errors.full_messages).to include("Phone number can't be blank")
+            end
+
+            it 'tokenがない場合は登録できない' do
+              @connect.token = ''
+              @connect.valid?
+              expect(@connect.errors.full_messages).to include("Token can't be blank")
+
           end
         end
       end

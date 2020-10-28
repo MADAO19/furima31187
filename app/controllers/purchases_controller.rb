@@ -7,6 +7,8 @@ class PurchasesController < ApplicationController
 
   def create
     @connect = Connect.new(purchase_params)
+    if user_signed_in? && current_user.id == @item.user_id
+      redirect_to root_path
     if @connect.valid?
       pay_item
       @connect.save
@@ -14,6 +16,7 @@ class PurchasesController < ApplicationController
     else
       render 'index'
     end
+  end
   end
 
   private
